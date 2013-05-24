@@ -18,6 +18,9 @@
       // Does the resizing
       var resizer = function () {
         
+        // Set the font-size to 1px so spanWidth would not be too large (over parent)
+        $this.css('font-size', '1px');
+		
         // Add the wrapper span
         var theText = $this.html();
         $this.html("<span id='checkSizeForSquishing'>" + theText + "</span>");
