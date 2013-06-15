@@ -1,5 +1,5 @@
 (function( $ ){
-	
+  
   $.fn.squishy = function(options) {
 
     // Setup options
@@ -9,7 +9,7 @@
       'maxWidth': 10000,
       'minWidth' : -10000},
       options);
-	
+  
     return this.each(function() {
 
       // Store the object
@@ -17,10 +17,7 @@
       
       // Does the resizing
       var resizer = function () {
-        
-        // Set the font-size to 1px so spanWidth would not be too large (over parent)
-        $this.css('font-size', '1px');
-		
+    
         // Add the wrapper span
         var theText = $this.html();
         $this.html("<span id='checkSizeForSquishing'>" + theText + "</span>");
@@ -32,6 +29,7 @@
 
         // Set the target size (restricted by min/max sizes)
         var targetSize = fontSize*blockWidth/spanWidth;
+        //alert(targetSize);
         targetSize = Math.floor(Math.min(Math.max(targetSize, parseFloat(settings.minSize)), parseFloat(settings.maxSize)));
 
         $this.css('white-space', 'nowrap');
@@ -39,14 +37,20 @@
 
         // Remove the wrapper span
         $this.html(theText);
+        
       };
 
-      // Initial
+      // Set the font-size to 1px so spanWidth would not be too large (over parent)
+      $this.css('font-size', '1px');
+
+      // Initial will get it bigger but not too big
       resizer();
-			
+      // Second call fits exactly
+      resizer();
+      
       // Calls the resize on viewport width or orientation change
       $(window).on('resize orientationchange', resizer);
-    	
+      
     });
 
   };
