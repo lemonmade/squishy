@@ -1,8 +1,8 @@
 {
-  "name": "Squishy.js",
-  "version": "0.1",
-  "main": "./jquery.squishy.js",
-  "dependencies": {
-    "jquery": ">= 1.6"
-  }
+    "name": "Squishy.js",
+    "version": "0.2",
+    "main": "./jquery.squishy.js",
+    "dependencies": {
+        "jquery": ">= 1.6"
+    }
 }

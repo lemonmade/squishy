@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <!-- @reload -->
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>bigfoot.js Tests</title>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+        <script src="../jquery.squishy.js"></script>
+
+        <style>
+            h1, p {
+                border: 2px solid black;
+            }
+
+            .squishy {
+                border-color: red;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1 class="squishy">Squish this!</h1>
+        <h1>Squish this!</h1>
+        <div>
+            <p class="squishy">
+                Lorem ipsum dolor sit amet, consectetur adipisicing.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing.
+            </p>
+        </div>
+
+        <script>
+            // // Standard style
+            // $(".squishy").squishy();
+
+            // Manual resizes
+            var squishy = $(".squishy").squishy({runAutomatically: false});
+        </script>
+    </body>
+</html>
