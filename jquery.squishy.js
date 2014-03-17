@@ -53,7 +53,7 @@ $.fn.squishy = function(options) {
         resizer();
 
         // Calls the resize on viewport width or orientation change
-        $(window).on("resize orientationchange", resizer);
+        $(window).on("resize.squishy orientationchange.squishy", resizer);
     }
 
     return {
@@ -65,8 +65,15 @@ $.fn.squishy = function(options) {
             if(!settings["runAutomatically"]) {
                 settings["runAutomatically"] = true;
                 resizer();
-                $(window).on("resize orientationchange", resizer);
+                $(window).on("resize.squishy orientationchange.squishy", resizer);
             }
+        },
+
+        unSquish: function(keepFontSize) {
+            settings["runAutomatically"] = false;
+            $(window).off("resize.squishy orientationchange.squishy");
+            that.css({"white-space": "", "text-align": ""});
+            if(!keepFontSize) { that.css("font-size", ""); }
         }
     };
 };
