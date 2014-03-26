@@ -8,7 +8,8 @@ $.fn.squishy = function(options) {
         "maxSize"         : 10000,
         "maxWidth"        : 10000,
         "minWidth"        : -10000,
-        "runAutomatically": true
+        "runAutomatically": true,
+        "equalizeSizes"   : false
     }, options);
 
     var that = this;
@@ -16,7 +17,9 @@ $.fn.squishy = function(options) {
     // Does the resizing
     var resizer = function(e, subsetSelector) {
 
-        var actOn;
+        var actOn,
+            minFontSize = 10000;
+
         if(subsetSelector) {
             actOn = that.filter(function() {
                 return $(this).is(subsetSelector);
@@ -41,10 +44,22 @@ $.fn.squishy = function(options) {
 
             // Set the target size (restricted by min/max sizes)
             var targetSize = fontSize*blockWidth/spanWidth;
+
             targetSize = Math.floor(Math.min(Math.max(targetSize, parseFloat(settings.minSize)), parseFloat(settings.maxSize)));
+
+            if(settings["equalizeSizes"]) {
+                minFontSize = (targetSize < minFontSize) ?
+                                targetSize : minFontSize;
+            }
 
             $this.css({"white-space": "nowrap", "font-size": targetSize, "text-align": "justify"}).html(theText);
         });
+
+        if(settings["equalizeSizes"]) {
+            actOn.each(function() {
+                $(this).css("font-size", minFontSize);
+            });
+        }
 
     };
 
