@@ -47,7 +47,7 @@ $.fn.squishy = function(options) {
 
             targetSize = Math.floor(Math.min(Math.max(targetSize, parseFloat(settings.minSize)), parseFloat(settings.maxSize)));
 
-            if(settings["equalizeSizes"]) {
+            if(settings.equalizeSizes) {
                 minFontSize = (targetSize < minFontSize) ?
                                 targetSize : minFontSize;
             }
@@ -55,7 +55,7 @@ $.fn.squishy = function(options) {
             $this.css({"white-space": "nowrap", "font-size": targetSize, "text-align": "justify"}).html(theText);
         });
 
-        if(settings["equalizeSizes"]) {
+        if(settings.equalizeSizes) {
             actOn.each(function() {
                 $(this).css("font-size", minFontSize);
             });
@@ -77,15 +77,15 @@ $.fn.squishy = function(options) {
         },
 
         makeAutomatic: function() {
-            if(!settings["runAutomatically"]) {
-                settings["runAutomatically"] = true;
+            if(!settings.runAutomatically) {
+                settings.runAutomatically = true;
                 resizer();
                 $(window).on("resize.squishy orientationchange.squishy", resizer);
             }
         },
 
         unSquish: function(keepFontSize) {
-            settings["runAutomatically"] = false;
+            settings.runAutomatically = false;
             $(window).off("resize.squishy orientationchange.squishy");
             that.css({"white-space": "", "text-align": ""});
             if(!keepFontSize) { that.css("font-size", ""); }
