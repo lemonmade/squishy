@@ -38,7 +38,10 @@
             // var squishy = $(".squishy").squishy({runAutomatically: false});
 
             // Equalize sizes
-            var squishy = $(".squishy").squishy({equalizeSizes: true});
+            // var squishy = $(".squishy").squishy({equalizeSizes: true});
+
+            // Callback
+            var squishy = $(".squishy").squishy({ callback: function(args) { console.log(args); } })
         </script>
     </body>
 </html>

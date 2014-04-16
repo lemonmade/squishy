@@ -9,7 +9,8 @@ $.fn.squishy = function(options) {
         "maxWidth"        : 10000,
         "minWidth"        : -10000,
         "runAutomatically": true,
-        "equalizeSizes"   : false
+        "equalizeSizes"   : false,
+        "callback"        : null
     }, options);
 
     var that = this;
@@ -18,7 +19,9 @@ $.fn.squishy = function(options) {
     var resizer = function(e, subsetSelector) {
 
         var actOn,
-            minFontSize = 10000;
+            minFontSize = 10000,
+            finalFontSize = {},
+            count = 0;
 
         if(subsetSelector) {
             actOn = that.filter(function() {
@@ -29,7 +32,7 @@ $.fn.squishy = function(options) {
         }
 
         actOn.each(function() {
-            $this = $(this);
+            var $this = $(this);
 
             // Add the wrapper span
             var theText = $this.html(),
@@ -53,6 +56,11 @@ $.fn.squishy = function(options) {
             }
 
             $this.css({"white-space": "nowrap", "font-size": targetSize, "text-align": "justify"}).html(theText);
+
+            if(settings.callback) {
+                finalFontSize[count] = targetSize;
+                count++;
+            }
         });
 
         if(settings.equalizeSizes) {
@@ -61,6 +69,13 @@ $.fn.squishy = function(options) {
             });
         }
 
+        if(settings.callback) {
+            var callbackArgs = {
+                "fontSizes": finalFontSize,
+                "minFontSizeUsed": settings.equalizeSizes
+            }
+            settings.callback(callbackArgs);
+        }
     };
 
     if(settings.runAutomatically) {
