@@ -10,13 +10,16 @@ $.fn.squishy = function(options) {
         "minWidth"        : -10000,
         "runAutomatically": true,
         "equalizeSizes"   : false,
-        "callback"        : null
+        "callback"        : null,
+        "condition"       : null
     }, options);
 
     var that = this;
 
     // Does the resizing
     var resizer = function(e, subsetSelector) {
+
+        if(settings.condition && !settings.condition()) { return; }
 
         var actOn,
             minFontSize = 10000,
@@ -70,11 +73,7 @@ $.fn.squishy = function(options) {
         }
 
         if(settings.callback) {
-            var callbackArgs = {
-                "fontSizes": finalFontSize,
-                "minFontSizeUsed": settings.equalizeSizes
-            }
-            settings.callback(callbackArgs);
+            settings.callback(finalFontSize);
         }
     };
 
@@ -104,6 +103,10 @@ $.fn.squishy = function(options) {
             $(window).off("resize.squishy orientationchange.squishy");
             that.css({"white-space": "", "text-align": ""});
             if(!keepFontSize) { that.css("font-size", ""); }
+        },
+
+        set: function(setting, value) {
+            settings[setting] = value;
         }
     };
 };
