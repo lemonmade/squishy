@@ -39,14 +39,19 @@ $.fn.squishy = function(options) {
 
             // Add the wrapper span
             var theText = $this.html(),
-                $span   = $this.html("<span id='checkSizeForSquishing'>" + theText + "</span>").children("#checkSizeForSquishing");
+                $span   = $this.html("<span id='checkSizeForSquishing' style='font-size:1em!important;'>" + theText + "</span>").children("#checkSizeForSquishing");
+
+            console.log($span);
 
             // Figuring out the relevant widths
             var spanWidth = $span.width(),
-                blockWidth = Math.max(parseFloat(settings.minWidth), Math.min($this.width(), parseFloat(settings.maxWidth))),
+                blockWidth = Math.max(parseFloat(settings.minWidth),
+                                      Math.min($this.width(),
+                                               parseFloat(settings.maxWidth))
+                                      ),
                 fontSize = parseFloat($this.css("font-size"));
 
-            // console.log("fontSize: " + fontSize + ", blockWidth: " + blockWidth + ", spanWidth: " + spanWidth);
+            console.log("fontSize: " + fontSize + ", blockWidth: " + blockWidth + ", spanWidth: " + spanWidth);
 
             // Set the target size (restricted by min/max sizes)
             var targetSize = fontSize*blockWidth/spanWidth;
@@ -79,7 +84,9 @@ $.fn.squishy = function(options) {
 
     if(settings.runAutomatically) {
         // Initial will get it bigger but not too big
-        resizer();
+        $(document).ready(function() {
+            resizer();
+        });
 
         // Calls the resize on viewport width or orientation change
         $(window).on("resize.squishy orientationchange.squishy", resizer);

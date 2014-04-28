@@ -15,6 +15,10 @@
             .squishy {
                 border-color: red;
             }
+
+            span {
+                font-size: 14px;
+            }
         </style>
     </head>
 
@@ -32,7 +36,7 @@
 
         <script>
             // Standard style
-            // var squishy = $(".squishy").squishy();
+            var squishy = $(".squishy").squishy();
 
             // Manual resizes
             // var squishy = $(".squishy").squishy({runAutomatically: false});
@@ -44,8 +48,8 @@
             // var squishy = $(".squishy").squishy({ callback: function(args) { console.log(args); } })
 
             // Conditions
-            var mql = window.matchMedia("(max-width: 50em)");
-            var squishy = $(".squishy").squishy({condition: function() { return mql.matches; }});
+            // var mql = window.matchMedia("(max-width: 50em)");
+            // var squishy = $(".squishy").squishy({condition: function() { return mql.matches; }});
         </script>
     </body>
 </html>
