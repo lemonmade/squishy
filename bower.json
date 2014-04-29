@@ -1,0 +1,28 @@
+{
+  "name": "squishy",
+  "main": "src/squishy.js",
+  "version": "1.0.0",
+  "homepage": "http://www.cmsauve.com/projects/squishy",
+  "authors": [
+    "Chris Sauve <chris@pxldot.com>"
+  ],
+  "description": "A jQuery plugin to size text such that it completely fills its container.",
+  "keywords": [
+    "jquery",
+    "plugin",
+    "squishy",
+    "text",
+    "resizing"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": ">= 1.9.0"
+  }
+}
