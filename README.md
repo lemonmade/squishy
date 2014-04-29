@@ -7,4 +7,4 @@ You can pass the script a number of options to restrict the squishiness. `maxSiz
 
 Much thanks to the guys at [Paravel](http://paravelinc.com/) for their work on [FitText](http://fittextjs.com/), on which this script is largely based. This plugin only works for a single line; if you are looking for multiline text fitting, I recommend [SlabText](http://www.frequency-decoder.com/demo/slabText/).
 
-You can view a demo on the [project page](http://cmsauve.com/projects/squishy) for this plugin.
+You can view a demo on the [project page](http://cmsauve.com/labs/squishy) for this plugin.
