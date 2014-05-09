@@ -23,7 +23,7 @@ $.fn.squishy = function(options) {
 
         var actOn,
             minFontSize = 10000,
-            finalFontSize = {},
+            finalFontSize = [],
             count = 0;
 
         if(subsetSelector) {
@@ -64,7 +64,7 @@ $.fn.squishy = function(options) {
             $this.css({"white-space": "nowrap", "font-size": targetSize, "text-align": "justify"}).html(theText);
 
             if(settings.callback) {
-                finalFontSize[count] = targetSize;
+                finalFontSize.push(targetSize);
                 count++;
             }
         });
