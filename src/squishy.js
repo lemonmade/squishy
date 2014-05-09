@@ -4,14 +4,14 @@ $.fn.squishy = function(options) {
 
     // Setup options
     var settings = $.extend({
-        "minSize"         : -10000,
-        "maxSize"         : 10000,
-        "maxWidth"        : 10000,
-        "minWidth"        : -10000,
-        "runAutomatically": true,
-        "equalizeSizes"   : false,
-        "callback"        : null,
-        "condition"       : null
+        minSize            : -10000,
+        maxSize            : 10000,
+        maxWidth           : 10000,
+        minWidth           : -10000,
+        runAutomatically   : true,
+        equalizeSizes      : false,
+        callback           : null,
+        condition          : null
     }, options);
 
     var that = this;
@@ -41,8 +41,6 @@ $.fn.squishy = function(options) {
             var theText = $this.html(),
                 $span   = $this.html("<span id='checkSizeForSquishing' style='font-size:1em!important;'>" + theText + "</span>").children("#checkSizeForSquishing");
 
-            console.log($span);
-
             // Figuring out the relevant widths
             var spanWidth = $span.width(),
                 blockWidth = Math.max(parseFloat(settings.minWidth),
@@ -51,7 +49,7 @@ $.fn.squishy = function(options) {
                                       ),
                 fontSize = parseFloat($this.css("font-size"));
 
-            console.log("fontSize: " + fontSize + ", blockWidth: " + blockWidth + ", spanWidth: " + spanWidth);
+            // console.log("fontSize: " + fontSize + ", blockWidth: " + blockWidth + ", spanWidth: " + spanWidth);
 
             // Set the target size (restricted by min/max sizes)
             var targetSize = fontSize*blockWidth/spanWidth;
