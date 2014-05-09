@@ -1,7 +1,7 @@
 {
   "name": "squishy",
   "main": "src/squishy.js",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "homepage": "http://www.cmsauve.com/projects/squishy",
   "authors": [
     "Chris Sauve <chris@pxldot.com>"
